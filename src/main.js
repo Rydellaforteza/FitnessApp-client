@@ -11,10 +11,14 @@ const app = createApp(App);
 
 const pinia = createPinia();
 app.use(pinia);
-app.use(router);
 
 
 import { useGlobalStore } from "./stores/global";
 const global = useGlobalStore();
-global.init(); 
+global.init();
+
+
+app.use(router);
+
+
 app.mount("#app");
