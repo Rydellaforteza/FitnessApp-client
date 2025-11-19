@@ -27,7 +27,7 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, watchEffect } from "vue";
 import { useGlobalStore } from "../stores/global";
 import { notyf } from "../stores/notyf";
 import { useRouter } from "vue-router";
@@ -36,11 +36,15 @@ const router = useRouter();
 const global = useGlobalStore();
 
 
-if (!global.token && localStorage.getItem("token")) {
-  global.setToken(localStorage.getItem("token"));
-}
+global.init();
 
-const isLoggedIn = computed(() => global.isLoggedIn);
+
+const isLoggedIn = computed(() => global.token !== null);
+
+
+watchEffect(() => {
+  console.log("Navbar token:", global.token);
+});
 
 const handleLogout = () => {
   global.logout();
