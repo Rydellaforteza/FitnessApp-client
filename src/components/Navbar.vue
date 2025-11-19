@@ -17,9 +17,9 @@
           <RouterLink class="nav-link" to="/login">Login</RouterLink>
         </li>
 
-       <li v-if="isLoggedIn" class="nav-item">
-        <a class="nav-link logout-link" @click="handleLogout">Logout</a>
-      </li>
+        <li v-if="isLoggedIn" class="nav-item">
+          <a class="nav-link logout-link" @click="handleLogout">Logout</a>
+        </li>
 
       </ul>
     </div>
@@ -27,6 +27,7 @@
 </template>
 
 <script setup>
+import { computed } from "vue";
 import { useGlobalStore } from "../stores/global";
 import { notyf } from "../stores/notyf";
 import { useRouter } from "vue-router";
@@ -34,7 +35,8 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 const global = useGlobalStore();
 
-const isLoggedIn = global.isLoggedIn;
+
+const isLoggedIn = computed(() => global.isLoggedIn);
 
 const handleLogout = () => {
   global.logout();
