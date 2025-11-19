@@ -5,8 +5,12 @@ import Register from "../pages/Register.vue";
 import { notyf } from "../stores/notyf";
 
 const routes = [
+  
+  { path: "/", redirect: "/login" },
+
   { path: "/login", component: Login },
   { path: "/register", component: Register },
+
   {
     path: "/workouts",
     component: Workouts,
@@ -20,7 +24,10 @@ const routes = [
 
       next();
     },
-  }
+  },
+
+  // Fallback for unknown routes
+  { path: "/:pathMatch(.*)*", redirect: "/login" },
 ];
 
 export default createRouter({
