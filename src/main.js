@@ -6,11 +6,15 @@ import router from "./router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
-
-
 const app = createApp(App);
 
-app.use(createPinia()); 
+
+const pinia = createPinia();
+app.use(pinia);
 app.use(router);
 
+
+import { useGlobalStore } from "./stores/global";
+const global = useGlobalStore();
+global.init(); 
 app.mount("#app");

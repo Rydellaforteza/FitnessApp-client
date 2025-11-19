@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 
 export const useGlobalStore = defineStore("global", {
   state: () => ({
-    token: localStorage.getItem("token") || null,
+    token: null,
   }),
 
   getters: {
@@ -10,6 +10,10 @@ export const useGlobalStore = defineStore("global", {
   },
 
   actions: {
+    init() {
+      this.token = localStorage.getItem("token") || null;
+    },
+
     setToken(token) {
       this.token = token;
       localStorage.setItem("token", token);
