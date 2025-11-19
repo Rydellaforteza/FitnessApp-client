@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Workouts from "../views/Workouts.vue";
-import Login from "../views/Login.vue";
-import Register from "../views/Register.vue";
+import Workouts from "../pages/Workouts.vue";
+import Login from "../pages/Login.vue";
+import Register from "../pages/Register.vue";
 import { notyf } from "../stores/notyf";
 
 const routes = [
