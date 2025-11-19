@@ -36,6 +36,10 @@ const router = useRouter();
 const global = useGlobalStore();
 
 
+if (!global.token && localStorage.getItem("token")) {
+  global.setToken(localStorage.getItem("token"));
+}
+
 const isLoggedIn = computed(() => global.isLoggedIn);
 
 const handleLogout = () => {
@@ -44,3 +48,4 @@ const handleLogout = () => {
   router.push("/login");
 };
 </script>
+
